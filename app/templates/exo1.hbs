@@ -1,0 +1,7 @@
+{{textarea value=model.content maxlength=model.MAX class="form-control"}}
+<div class=" alert {{model.style}}">
+  {{model.size}} caractère(s) restant
+</div>
+
+<button class="btn btn-primary" {{action "save"}}>Enregistrer</button>
+<button class="btn btn-primary" {{action "clear"}}>Effacer</button>
