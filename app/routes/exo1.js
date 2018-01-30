@@ -5,7 +5,6 @@ import {notEmpty} from '@ember/object/computed';
 const Note = EmberObject.extend({
   alertVisible:notEmpty('info'),
   size:computed('content',function(){
-    let model=this.modelFor(this.routeName);
     let content=this.get('content');
     if(content)
       this.set('info','Note modifiée');
