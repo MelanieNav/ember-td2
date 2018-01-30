@@ -1,10 +1,14 @@
 import Route from '@ember/routing/route';
 import EmberObject, {computed} from '@ember/object';
-import {equal} from '@ember/object/computed';
+import {notEmpty} from '@ember/object/computed';
 
 const Note = EmberObject.extend({
+  alertVisible:notEmpty('info'),
   size:computed('content',function(){
+    let model=this.modelFor(this.routeName);
     let content=this.get('content');
+    if(content)
+      this.set('info','Note modifiée');
     let MAX=this.get('MAX');
     return MAX-content.length;
   }),
@@ -28,12 +32,13 @@ export default Route.extend({
     });
   },
     actions:{
-      save:function(){
+      save:function(model){
+        model.set('info',`Note sauvegardée : ${model.get('content')}`);
 
     },
-    clear:function(){
-        let model=this.modelFor(this.routeName);
+    clear:function(model){
         model.set('content','');
+        model.set('info','');
     }
     }
   });
