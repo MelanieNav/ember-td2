@@ -27,7 +27,7 @@ export default Route.extend({
   model() {
     return Note.create({
       MAX: 100,
-      content: 'Entrez votre texte'
+      content:''
     });
   },
     actions:{
